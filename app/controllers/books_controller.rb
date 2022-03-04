@@ -12,7 +12,7 @@ class BooksController < ApplicationController
     def create
         @book = Book.new(book_params)
         if @book.save
-            render json: @book, status: 200
+            render json: @book
         else
             render error: { error: 'Unable to create book.' }, status: 400
         end
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
         end
     end
 
-    def destory
+    def destroy
         @book = Book.find(params[:id])
         if @book
             @book.destroy
